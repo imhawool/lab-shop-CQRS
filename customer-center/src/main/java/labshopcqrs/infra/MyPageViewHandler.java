@@ -28,7 +28,7 @@ public class MyPageViewHandler {
             // view 객체에 이벤트의 Value 를 set 함
             myPage.setOrderId(orderPlaced.getId());
             myPage.setProductId(orderPlaced.getProductId());
-            myPage.setOrderStatus("주문됨");
+            myPage.setOrderStatus("OrderPlaced");
             // view 레파지 토리에 save
             myPageRepository.save(myPage);
         } catch (Exception e) {
@@ -43,7 +43,7 @@ public class MyPageViewHandler {
         try {
             if (!deliveryStarted.validate()) return;
             // view 객체 조회
-            Optional<MyPage> myPageOptional = myPageRepository.findByOrderId(
+            Optional<MyPage> myPageOptional = myPageRepository.findById(
                 deliveryStarted.getOrderId()
             );
 
